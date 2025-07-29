@@ -2,30 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting to Salesforce</title>
+  <title>Open Salesforce</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      background-color: #00A1E0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Open Salesforce</h2>
+  <p>Click the button below to open Salesforce.</p>
+  <button onclick="handleRedirect()">Launch Salesforce</button>
+
   <script>
-    function redirectToSalesforce() {
+    function handleRedirect() {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       const isMobile = /android|iphone|ipad|ipod/i.test(userAgent);
 
       if (isMobile) {
-        // Try to open Salesforce mobile app
+        // Try to open the mobile app
         window.location.href = "salesforce://";
-
-        // Fallback to web login after 2 seconds if app is not installed
+        // Fallback to web after short delay
         setTimeout(() => {
-          window.location.href = "https://rndc-cgcloud.my.salesforce.com"; // <-- Replace with your domain
+          window.location.href = "https://yourdomain.my.salesforce.com"; // replace with your custom domain
         }, 2000);
       } else {
-        // Desktop users go directly to Salesforce web
-        window.location.href = "https://rndc-cgcloud.my.salesforce.com"; // <-- Replace with your domain
+        // Desktop goes straight to Salesforce web
+        window.location.href = "https://yourdomain.my.salesforce.com"; // replace with your custom domain
       }
     }
-
-    window.onload = redirectToSalesforce;
   </script>
-</head>
-<body>
-  <p>Redirecting to Salesforce...</p>
 </body>
 </html>
+
